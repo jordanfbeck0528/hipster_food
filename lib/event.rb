@@ -21,7 +21,6 @@ class Event
     trucks = []
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item|
-        # require "pry"; binding.pry
         trucks << food_truck if item[0] == specific_item
       end
     end
@@ -56,5 +55,11 @@ class Event
       quantity_of_item(item) > 50 &&
       food_trucks_that_sell(item).count >= 2
     end
+  end
+
+  def sorted_item_list
+    all_items.map do |item|
+      item.name
+    end.sort
   end
 end
